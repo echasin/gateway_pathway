@@ -1,0 +1,33 @@
+{
+    "gatewayPathwayApp": {
+        "pathwaytype" : {
+            "home": {
+                "title": "Pathwaytypes",
+                "createLabel": "Create a new Pathwaytype",
+                "createOrEditLabel": "Create or edit a Pathwaytype",
+                "search": "Search for Pathwaytype"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Pathwaytype {{ id }}?"
+            },
+            "detail": {
+                "title": "Pathwaytype"
+            },
+            "name": "Name",
+            "nameshort": "Nameshort",
+            "description": "Description",
+            "status": "Status",
+            "lastmodifiedby": "Lastmodifiedby",
+            "lastmodifieddatetime": "Lastmodifieddatetime",
+            "domain": "Domain",
+            "pathwaycategory": "Pathwaycategory"
+        }
+    },
+    "pathwayApp": {
+        "pathwaytype" : {
+            "created": "A new Pathwaytype is created with identifier {{ param }}",
+            "updated": "A Pathwaytype is updated with identifier {{ param }}",
+            "deleted": "A Pathwaytype is deleted with identifier {{ param }}"
+        }
+    }
+}

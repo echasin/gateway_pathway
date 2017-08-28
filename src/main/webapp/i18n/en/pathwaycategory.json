@@ -1,0 +1,33 @@
+{
+    "gatewayPathwayApp": {
+        "pathwaycategory" : {
+            "home": {
+                "title": "Pathwaycategories",
+                "createLabel": "Create a new Pathwaycategory",
+                "createOrEditLabel": "Create or edit a Pathwaycategory",
+                "search": "Search for Pathwaycategory"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Pathwaycategory {{ id }}?"
+            },
+            "detail": {
+                "title": "Pathwaycategory"
+            },
+            "name": "Name",
+            "nameshort": "Nameshort",
+            "description": "Description",
+            "status": "Status",
+            "lastmodifiedby": "Lastmodifiedby",
+            "lastmodifieddatetime": "Lastmodifieddatetime",
+            "domain": "Domain",
+            "pathwayclass": "Pathwayclass"
+        }
+    },
+    "pathwayApp": {
+        "pathwaycategory" : {
+            "created": "A new Pathwaycategory is created with identifier {{ param }}",
+            "updated": "A Pathwaycategory is updated with identifier {{ param }}",
+            "deleted": "A Pathwaycategory is deleted with identifier {{ param }}"
+        }
+    }
+}

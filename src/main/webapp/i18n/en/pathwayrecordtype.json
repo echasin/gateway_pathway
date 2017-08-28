@@ -1,0 +1,32 @@
+{
+    "gatewayPathwayApp": {
+        "pathwayrecordtype" : {
+            "home": {
+                "title": "Pathwayrecordtypes",
+                "createLabel": "Create a new Pathwayrecordtype",
+                "createOrEditLabel": "Create or edit a Pathwayrecordtype",
+                "search": "Search for Pathwayrecordtype"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Pathwayrecordtype {{ id }}?"
+            },
+            "detail": {
+                "title": "Pathwayrecordtype"
+            },
+            "name": "Name",
+            "nameshort": "Nameshort",
+            "description": "Description",
+            "status": "Status",
+            "lastmodifiedby": "Lastmodifiedby",
+            "lastmodifieddatetime": "Lastmodifieddatetime",
+            "domain": "Domain"
+        }
+    },
+    "pathwayApp": {
+        "pathwayrecordtype" : {
+            "created": "A new Pathwayrecordtype is created with identifier {{ param }}",
+            "updated": "A Pathwayrecordtype is updated with identifier {{ param }}",
+            "deleted": "A Pathwayrecordtype is deleted with identifier {{ param }}"
+        }
+    }
+}

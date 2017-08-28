@@ -1,0 +1,95 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayPathwayApp.pathwaytype.home.title">Pathwaytypes</span>
+        <button class="btn btn-primary float-right jh-create-entity create-pathwaytype" [routerLink]="['/', { outlets: { popup: ['pathwaytype-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayPathwayApp.pathwaytype.home.createLabel">
+            Create new Pathwaytype
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayPathwayApp.pathwaytype.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="pathwaytypes">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="name"><span jhiTranslate="gatewayPathwayApp.pathwaytype.name">Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="nameshort"><span jhiTranslate="gatewayPathwayApp.pathwaytype.nameshort">Nameshort</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="description"><span jhiTranslate="gatewayPathwayApp.pathwaytype.description">Description</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="status"><span jhiTranslate="gatewayPathwayApp.pathwaytype.status">Status</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastmodifiedby"><span jhiTranslate="gatewayPathwayApp.pathwaytype.lastmodifiedby">Lastmodifiedby</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastmodifieddatetime"><span jhiTranslate="gatewayPathwayApp.pathwaytype.lastmodifieddatetime">Lastmodifieddatetime</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="domain"><span jhiTranslate="gatewayPathwayApp.pathwaytype.domain">Domain</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="pathwaycategory.name"><span jhiTranslate="gatewayPathwayApp.pathwaytype.pathwaycategory">Pathwaycategory</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let pathwaytype of pathwaytypes ;trackBy: trackId">
+                <td><a [routerLink]="['../pathwaytype', pathwaytype.id ]">{{pathwaytype.id}}</a></td>
+                <td>{{pathwaytype.name}}</td>
+                <td>{{pathwaytype.nameshort}}</td>
+                <td>{{pathwaytype.description}}</td>
+                <td>{{pathwaytype.status}}</td>
+                <td>{{pathwaytype.lastmodifiedby}}</td>
+                <td>{{pathwaytype.lastmodifieddatetime | date:'medium'}}</td>
+                <td>{{pathwaytype.domain}}</td>
+                <td>
+                    <div *ngIf="pathwaytype.pathwaycategory">
+                        <a [routerLink]="['../pathwaycategory', pathwaytype.pathwaycategory?.id ]" >{{pathwaytype.pathwaycategory?.name}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../pathwaytype', pathwaytype.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'pathwaytype/'+ pathwaytype.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'pathwaytype/'+ pathwaytype.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div *ngIf="pathwaytypes && pathwaytypes.length">
+            <div class="row justify-content-center">
+                <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+</div>

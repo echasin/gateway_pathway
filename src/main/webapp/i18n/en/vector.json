@@ -1,0 +1,39 @@
+{
+    "gatewayPathwayApp": {
+        "vector" : {
+            "home": {
+                "title": "Vectors",
+                "createLabel": "Create a new Vector",
+                "createOrEditLabel": "Create or edit a Vector",
+                "search": "Search for Vector"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Vector {{ id }}?"
+            },
+            "detail": {
+                "title": "Vector"
+            },
+            "name": "Name",
+            "nameshort": "Nameshort",
+            "originjson": "Originjson",
+            "destinationjson": "Destinationjson",
+            "description": "Description",
+            "status": "Status",
+            "lastmodifiedby": "Lastmodifiedby",
+            "lastmodifieddatetime": "Lastmodifieddatetime",
+            "domain": "Domain",
+            "pathwayrecordtype": "Pathwayrecordtype",
+            "pathwayclass": "Pathwayclass",
+            "pathwaycategory": "Pathwaycategory",
+            "pathwaytype": "Pathwaytype",
+            "pathway": "Pathway"
+        }
+    },
+    "pathwayApp": {
+        "vector" : {
+            "created": "A new Vector is created with identifier {{ param }}",
+            "updated": "A Vector is updated with identifier {{ param }}",
+            "deleted": "A Vector is deleted with identifier {{ param }}"
+        }
+    }
+}

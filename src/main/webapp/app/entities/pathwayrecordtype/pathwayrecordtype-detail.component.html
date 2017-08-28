@@ -1,0 +1,49 @@
+
+<div *ngIf="pathwayrecordtype">
+    <h2><span jhiTranslate="gatewayPathwayApp.pathwayrecordtype.detail.title">Pathwayrecordtype</span> {{pathwayrecordtype.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayPathwayApp.pathwayrecordtype.name">Name</span></dt>
+        <dd>
+            <span>{{pathwayrecordtype.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayPathwayApp.pathwayrecordtype.nameshort">Nameshort</span></dt>
+        <dd>
+            <span>{{pathwayrecordtype.nameshort}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayPathwayApp.pathwayrecordtype.description">Description</span></dt>
+        <dd>
+            <span>{{pathwayrecordtype.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayPathwayApp.pathwayrecordtype.status">Status</span></dt>
+        <dd>
+            <span>{{pathwayrecordtype.status}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayPathwayApp.pathwayrecordtype.lastmodifiedby">Lastmodifiedby</span></dt>
+        <dd>
+            <span>{{pathwayrecordtype.lastmodifiedby}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayPathwayApp.pathwayrecordtype.lastmodifieddatetime">Lastmodifieddatetime</span></dt>
+        <dd>
+            <span>{{pathwayrecordtype.lastmodifieddatetime | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayPathwayApp.pathwayrecordtype.domain">Domain</span></dt>
+        <dd>
+            <span>{{pathwayrecordtype.domain}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'pathwayrecordtype/'+ pathwayrecordtype.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

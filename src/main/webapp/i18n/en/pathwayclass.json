@@ -1,0 +1,33 @@
+{
+    "gatewayPathwayApp": {
+        "pathwayclass" : {
+            "home": {
+                "title": "Pathwayclasses",
+                "createLabel": "Create a new Pathwayclass",
+                "createOrEditLabel": "Create or edit a Pathwayclass",
+                "search": "Search for Pathwayclass"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Pathwayclass {{ id }}?"
+            },
+            "detail": {
+                "title": "Pathwayclass"
+            },
+            "name": "Name",
+            "nameshort": "Nameshort",
+            "description": "Description",
+            "status": "Status",
+            "lastmodifiedby": "Lastmodifiedby",
+            "lastmodifieddatetime": "Lastmodifieddatetime",
+            "domain": "Domain",
+            "pathwayrecordtype": "Pathwayrecordtype"
+        }
+    },
+    "pathwayApp": {
+        "pathwayclass" : {
+            "created": "A new Pathwayclass is created with identifier {{ param }}",
+            "updated": "A Pathwayclass is updated with identifier {{ param }}",
+            "deleted": "A Pathwayclass is deleted with identifier {{ param }}"
+        }
+    }
+}

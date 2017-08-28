@@ -1,0 +1,95 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayPathwayApp.pathwaycategory.home.title">Pathwaycategories</span>
+        <button class="btn btn-primary float-right jh-create-entity create-pathwaycategory" [routerLink]="['/', { outlets: { popup: ['pathwaycategory-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayPathwayApp.pathwaycategory.home.createLabel">
+            Create new Pathwaycategory
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayPathwayApp.pathwaycategory.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="pathwaycategories">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="name"><span jhiTranslate="gatewayPathwayApp.pathwaycategory.name">Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="nameshort"><span jhiTranslate="gatewayPathwayApp.pathwaycategory.nameshort">Nameshort</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="description"><span jhiTranslate="gatewayPathwayApp.pathwaycategory.description">Description</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="status"><span jhiTranslate="gatewayPathwayApp.pathwaycategory.status">Status</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastmodifiedby"><span jhiTranslate="gatewayPathwayApp.pathwaycategory.lastmodifiedby">Lastmodifiedby</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastmodifieddatetime"><span jhiTranslate="gatewayPathwayApp.pathwaycategory.lastmodifieddatetime">Lastmodifieddatetime</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="domain"><span jhiTranslate="gatewayPathwayApp.pathwaycategory.domain">Domain</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="pathwayclass.name"><span jhiTranslate="gatewayPathwayApp.pathwaycategory.pathwayclass">Pathwayclass</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let pathwaycategory of pathwaycategories ;trackBy: trackId">
+                <td><a [routerLink]="['../pathwaycategory', pathwaycategory.id ]">{{pathwaycategory.id}}</a></td>
+                <td>{{pathwaycategory.name}}</td>
+                <td>{{pathwaycategory.nameshort}}</td>
+                <td>{{pathwaycategory.description}}</td>
+                <td>{{pathwaycategory.status}}</td>
+                <td>{{pathwaycategory.lastmodifiedby}}</td>
+                <td>{{pathwaycategory.lastmodifieddatetime | date:'medium'}}</td>
+                <td>{{pathwaycategory.domain}}</td>
+                <td>
+                    <div *ngIf="pathwaycategory.pathwayclass">
+                        <a [routerLink]="['../pathwayclass', pathwaycategory.pathwayclass?.id ]" >{{pathwaycategory.pathwayclass?.name}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../pathwaycategory', pathwaycategory.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'pathwaycategory/'+ pathwaycategory.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'pathwaycategory/'+ pathwaycategory.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div *ngIf="pathwaycategories && pathwaycategories.length">
+            <div class="row justify-content-center">
+                <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+</div>

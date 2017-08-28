@@ -1,0 +1,32 @@
+{
+    "gatewayPathwayApp": {
+        "pathwaystatus" : {
+            "home": {
+                "title": "Pathwaystatuses",
+                "createLabel": "Create a new Pathwaystatus",
+                "createOrEditLabel": "Create or edit a Pathwaystatus",
+                "search": "Search for Pathwaystatus"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Pathwaystatus {{ id }}?"
+            },
+            "detail": {
+                "title": "Pathwaystatus"
+            },
+            "name": "Name",
+            "nameshort": "Nameshort",
+            "description": "Description",
+            "status": "Status",
+            "lastmodifiedby": "Lastmodifiedby",
+            "lastmodifieddatetime": "Lastmodifieddatetime",
+            "domain": "Domain"
+        }
+    },
+    "pathwayApp": {
+        "pathwaystatus" : {
+            "created": "A new Pathwaystatus is created with identifier {{ param }}",
+            "updated": "A Pathwaystatus is updated with identifier {{ param }}",
+            "deleted": "A Pathwaystatus is deleted with identifier {{ param }}"
+        }
+    }
+}

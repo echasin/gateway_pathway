@@ -1,0 +1,39 @@
+{
+    "gatewayPathwayApp": {
+        "pathway" : {
+            "home": {
+                "title": "Pathways",
+                "createLabel": "Create a new Pathway",
+                "createOrEditLabel": "Create or edit a Pathway",
+                "search": "Search for Pathway"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Pathway {{ id }}?"
+            },
+            "detail": {
+                "title": "Pathway"
+            },
+            "name": "Name",
+            "nameshort": "Nameshort",
+            "originjson": "Originjson",
+            "destinationjson": "Destinationjson",
+            "description": "Description",
+            "status": "Status",
+            "lastmodifiedby": "Lastmodifiedby",
+            "lastmodifieddatetime": "Lastmodifieddatetime",
+            "domain": "Domain",
+            "vector": "Vector",
+            "pathwayrecordtype": "Pathwayrecordtype",
+            "pathwayclass": "Pathwayclass",
+            "pathwaycategory": "Pathwaycategory",
+            "pathwaytype": "Pathwaytype"
+        }
+    },
+    "pathwayApp": {
+        "pathway" : {
+            "created": "A new Pathway is created with identifier {{ param }}",
+            "updated": "A Pathway is updated with identifier {{ param }}",
+            "deleted": "A Pathway is deleted with identifier {{ param }}"
+        }
+    }
+}

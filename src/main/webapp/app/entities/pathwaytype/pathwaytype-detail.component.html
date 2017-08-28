@@ -1,0 +1,55 @@
+
+<div *ngIf="pathwaytype">
+    <h2><span jhiTranslate="gatewayPathwayApp.pathwaytype.detail.title">Pathwaytype</span> {{pathwaytype.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayPathwayApp.pathwaytype.name">Name</span></dt>
+        <dd>
+            <span>{{pathwaytype.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayPathwayApp.pathwaytype.nameshort">Nameshort</span></dt>
+        <dd>
+            <span>{{pathwaytype.nameshort}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayPathwayApp.pathwaytype.description">Description</span></dt>
+        <dd>
+            <span>{{pathwaytype.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayPathwayApp.pathwaytype.status">Status</span></dt>
+        <dd>
+            <span>{{pathwaytype.status}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayPathwayApp.pathwaytype.lastmodifiedby">Lastmodifiedby</span></dt>
+        <dd>
+            <span>{{pathwaytype.lastmodifiedby}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayPathwayApp.pathwaytype.lastmodifieddatetime">Lastmodifieddatetime</span></dt>
+        <dd>
+            <span>{{pathwaytype.lastmodifieddatetime | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayPathwayApp.pathwaytype.domain">Domain</span></dt>
+        <dd>
+            <span>{{pathwaytype.domain}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayPathwayApp.pathwaytype.pathwaycategory">Pathwaycategory</span></dt>
+        <dd>
+            <div *ngIf="pathwaytype.pathwaycategory">
+                <a [routerLink]="['/pathwaycategory', pathwaytype.pathwaycategory?.id]">{{pathwaytype.pathwaycategory?.name}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'pathwaytype/'+ pathwaytype.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

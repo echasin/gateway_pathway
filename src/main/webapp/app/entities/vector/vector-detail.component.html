@@ -1,0 +1,87 @@
+
+<div *ngIf="vector">
+    <h2><span jhiTranslate="gatewayPathwayApp.vector.detail.title">Vector</span> {{vector.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayPathwayApp.vector.name">Name</span></dt>
+        <dd>
+            <span>{{vector.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayPathwayApp.vector.nameshort">Nameshort</span></dt>
+        <dd>
+            <span>{{vector.nameshort}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayPathwayApp.vector.originjson">Originjson</span></dt>
+        <dd>
+            <span>{{vector.originjson}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayPathwayApp.vector.destinationjson">Destinationjson</span></dt>
+        <dd>
+            <span>{{vector.destinationjson}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayPathwayApp.vector.description">Description</span></dt>
+        <dd>
+            <span>{{vector.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayPathwayApp.vector.status">Status</span></dt>
+        <dd>
+            <span>{{vector.status}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayPathwayApp.vector.lastmodifiedby">Lastmodifiedby</span></dt>
+        <dd>
+            <span>{{vector.lastmodifiedby}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayPathwayApp.vector.lastmodifieddatetime">Lastmodifieddatetime</span></dt>
+        <dd>
+            <span>{{vector.lastmodifieddatetime | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayPathwayApp.vector.domain">Domain</span></dt>
+        <dd>
+            <span>{{vector.domain}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayPathwayApp.vector.pathwayrecordtype">Pathwayrecordtype</span></dt>
+        <dd>
+            <div *ngIf="vector.pathwayrecordtype">
+                <a [routerLink]="['/pathwayrecordtype', vector.pathwayrecordtype?.id]">{{vector.pathwayrecordtype?.name}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayPathwayApp.vector.pathwayclass">Pathwayclass</span></dt>
+        <dd>
+            <div *ngIf="vector.pathwayclass">
+                <a [routerLink]="['/pathwayclass', vector.pathwayclass?.id]">{{vector.pathwayclass?.name}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayPathwayApp.vector.pathwaycategory">Pathwaycategory</span></dt>
+        <dd>
+            <div *ngIf="vector.pathwaycategory">
+                <a [routerLink]="['/pathwaycategory', vector.pathwaycategory?.id]">{{vector.pathwaycategory?.name}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayPathwayApp.vector.pathwaytype">Pathwaytype</span></dt>
+        <dd>
+            <div *ngIf="vector.pathwaytype">
+                <a [routerLink]="['/pathwaytype', vector.pathwaytype?.id]">{{vector.pathwaytype?.name}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayPathwayApp.vector.pathway">Pathway</span></dt>
+        <dd>
+            <div *ngIf="vector.pathway">
+                <a [routerLink]="['/pathway', vector.pathway?.id]">{{vector.pathway?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'vector/'+ vector.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
