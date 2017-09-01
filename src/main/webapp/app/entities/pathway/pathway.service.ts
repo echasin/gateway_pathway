@@ -11,6 +11,7 @@ export class PathwayService {
 
     private resourceUrl = 'pathway/api/pathways';
     private resourceSearchUrl = 'pathway/api/_search/pathways';
+    private resourceSearchAsset = 'asset/api/searchAsset';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
@@ -34,6 +35,14 @@ export class PathwayService {
 
     find(id: number): Observable<Pathway> {
         return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {
+            const jsonResponse = res.json();
+            this.convertItemFromServer(jsonResponse);
+            return jsonResponse;
+        });
+    }
+    
+    searchAsset(assetName: any): Observable<Pathway> {
+        return this.http.get(`${this.resourceSearchAsset}/${assetName}`).map((res: Response) => {
             const jsonResponse = res.json();
             this.convertItemFromServer(jsonResponse);
             return jsonResponse;

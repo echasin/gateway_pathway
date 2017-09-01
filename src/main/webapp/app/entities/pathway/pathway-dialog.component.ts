@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Response } from '@angular/http';
 
 import { Observable } from 'rxjs/Rx';
-import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModalRef ,NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
 import { Pathway } from './pathway.model';
@@ -14,6 +14,7 @@ import { Pathwayclass, PathwayclassService } from '../pathwayclass';
 import { Pathwaycategory, PathwaycategoryService } from '../pathwaycategory';
 import { Pathwaytype, PathwaytypeService } from '../pathwaytype';
 import { ResponseWrapper } from '../../shared';
+
 
 @Component({
     selector: 'jhi-pathway-dialog',
@@ -31,8 +32,16 @@ export class PathwayDialogComponent implements OnInit {
     pathwaycategories: Pathwaycategory[];
 
     pathwaytypes: Pathwaytype[];
+    
+    closeResult: string;
 
+    asset: any=[];
+    
+    assetName : any;
+    
+    
     constructor(
+        private modalService: NgbModal,
         public activeModal: NgbActiveModal,
         private alertService: JhiAlertService,
         private pathwayService: PathwayService,
@@ -111,6 +120,40 @@ export class PathwayDialogComponent implements OnInit {
     trackPathwaytypeById(index: number, item: Pathwaytype) {
         return item.id;
     }
+    open(content) {
+      this.modalService.open(content).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+     }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+     });
+    }
+
+    private getDismissReason(reason: any): string {
+     if (reason === ModalDismissReasons.ESC) {
+       return 'by pressing ESC';
+     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+       return 'by clicking on a backdrop';
+     } else {
+      return  `with: ${reason}`;
+     }
+    }
+        
+    searchAsset(){
+        console.log(this.assetName);
+        this.pathwayService.searchAsset(this.assetName).subscribe((asset) => {
+            this.asset = asset;
+            console.log(asset);
+        });
+    }
+    
+    setOrigin(origin){
+        this.pathway.originjson=JSON.stringify(origin);
+    }
+    
+    setDestination(destination){
+        this.pathway.destinationjson=JSON.stringify(destination);
+    }
+    
 }
 
 @Component({
@@ -140,5 +183,6 @@ export class PathwayPopupComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.routeSub.unsubscribe();
-    }
+    }   
+ 
 }

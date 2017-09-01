@@ -45,7 +45,7 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="gatewayPathwayApp.pathway.originjson" for="field_originjson">Originjson</label>
             <input type="text" class="form-control" name="originjson" id="field_originjson"
-                [(ngModel)]="pathway.originjson" maxlength="4000" />
+                [(ngModel)]="pathway.originjson" maxlength="4000" (click)="open(origin)" />
             <div [hidden]="!(editForm.controls.originjson?.dirty && editForm.controls.originjson?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.originjson?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 4000 }">
@@ -56,7 +56,7 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="gatewayPathwayApp.pathway.destinationjson" for="field_destinationjson">Destinationjson</label>
             <input type="text" class="form-control" name="destinationjson" id="field_destinationjson"
-                [(ngModel)]="pathway.destinationjson" maxlength="4000" />
+                [(ngModel)]="pathway.destinationjson" maxlength="4000" (click)="open(destination)"/>
             <div [hidden]="!(editForm.controls.destinationjson?.dirty && editForm.controls.destinationjson?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.destinationjson?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 4000 }">
@@ -176,3 +176,51 @@
         </button>
     </div>
 </form>
+
+
+<ng-template #origin let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Modal title</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+     <div class="input-group">
+        <input id="search" type="text" class="form-control" name="search" [(ngModel)]="assetName" placeholder="Search Asset"  />
+        <span class="input-group-btn">
+               <button type="button" class="btn btn-default" (click)="searchAsset()">Search</button>
+        </span>
+    </div>    
+    <ul *ngFor="let item of asset">
+    <li (click)="setOrigin(item)">{{item.name}}</li>
+    </ul>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>
+
+<ng-template #destination let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Modal title</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+     <div class="input-group">
+        <input id="search" type="text" class="form-control" name="search" [(ngModel)]="assetName" placeholder="Search Asset"  />
+        <span class="input-group-btn">
+               <button type="button" class="btn btn-default" (click)="searchAsset()">Search</button>
+        </span>
+    </div>
+    <ul *ngFor="let item of asset">
+    <li (click)="setDestination(item)">{{item.name}}</li>
+    </ul>
+    
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>

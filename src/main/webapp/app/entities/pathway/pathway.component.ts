@@ -7,6 +7,7 @@ import { Pathway } from './pathway.model';
 import { PathwayService } from './pathway.service';
 import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../shared';
 import { PaginationConfig } from '../../blocks/config/uib-pagination.config';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'jhi-pathway',
@@ -29,8 +30,11 @@ currentAccount: any;
     predicate: any;
     previousPage: any;
     reverse: any;
+    asset: any;
+    closeResult: string;
 
     constructor(
+        private modalService: NgbModal,
         private pathwayService: PathwayService,
         private parseLinks: JhiParseLinks,
         private alertService: JhiAlertService,
@@ -147,4 +151,5 @@ currentAccount: any;
     private onError(error) {
         this.alertService.error(error.message, null, null);
     }
+    
 }
