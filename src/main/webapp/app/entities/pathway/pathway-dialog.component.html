@@ -44,8 +44,14 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="gatewayPathwayApp.pathway.originjson" for="field_originjson">Originjson</label>
-            <input type="text" class="form-control" name="originjson" id="field_originjson"
-                [(ngModel)]="pathway.originjson" maxlength="4000" (click)="open(origin)" />
+            <div class="modal-body">
+                <div class="input-group">
+                  <input type="text" class="form-control" name="originjson" id="field_originjson"
+                      [(ngModel)]="pathway.originjson" maxlength="4000"/>
+                  <span class="input-group-btn">
+                       <button type="button" class="btn btn-default" (click)="open(origin)">Search</button>
+                  </span>
+                </div>      
             <div [hidden]="!(editForm.controls.originjson?.dirty && editForm.controls.originjson?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.originjson?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 4000 }">
@@ -53,10 +59,17 @@
                 </small>
             </div>
         </div>
+        </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="gatewayPathwayApp.pathway.destinationjson" for="field_destinationjson">Destinationjson</label>
-            <input type="text" class="form-control" name="destinationjson" id="field_destinationjson"
-                [(ngModel)]="pathway.destinationjson" maxlength="4000" (click)="open(destination)"/>
+             <div class="input-group">
+                  <input type="text" class="form-control" name="destinationjson" id="field_destinationjson"
+                         [(ngModel)]="pathway.destinationjson" maxlength="4000"/>
+                  <span class="input-group-btn">
+                       <button type="button" class="btn btn-default" (click)="open(destination)">Search</button>
+                  </span>
+             </div> 
+                    
             <div [hidden]="!(editForm.controls.destinationjson?.dirty && editForm.controls.destinationjson?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.destinationjson?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 4000 }">
@@ -180,7 +193,7 @@
 
 <ng-template #origin let-c="close" let-d="dismiss">
   <div class="modal-header">
-    <h4 class="modal-title">Modal title</h4>
+    <h4 class="modal-title">Set Origin Asset</h4>
     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -203,7 +216,7 @@
 
 <ng-template #destination let-c="close" let-d="dismiss">
   <div class="modal-header">
-    <h4 class="modal-title">Modal title</h4>
+    <h4 class="modal-title">Set Destination Asset</h4>
     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
