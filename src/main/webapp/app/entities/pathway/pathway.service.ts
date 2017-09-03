@@ -41,8 +41,8 @@ export class PathwayService {
         });
     }
     
-    searchAsset(assetName: any): Observable<Pathway> {
-        return this.http.get(`${this.resourceSearchAsset}/${assetName}`).map((res: Response) => {
+    searchAsset(query: any): Observable<Pathway> {
+        return this.http.get(`${this.resourceSearchAsset}/${query}`).map((res: Response) => {
             const jsonResponse = res.json();
             this.convertItemFromServer(jsonResponse);
             return jsonResponse;

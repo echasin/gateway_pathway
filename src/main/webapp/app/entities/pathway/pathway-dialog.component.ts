@@ -37,7 +37,7 @@ export class PathwayDialogComponent implements OnInit {
 
     asset: any=[];
     
-    assetName : any;
+    query : any;
     
     
     constructor(
@@ -139,8 +139,8 @@ export class PathwayDialogComponent implements OnInit {
     }
         
     searchAsset(){
-        console.log(this.assetName);
-        this.pathwayService.searchAsset(this.assetName).subscribe((asset) => {
+        console.log(this.query);
+        this.pathwayService.searchAsset(this.query).subscribe((asset) => {
             this.asset = asset;
             console.log(asset);
         });
